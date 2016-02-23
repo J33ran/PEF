@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BreakAwayModel
+namespace BAGA
 {
     using System;
     using System.Collections.Generic;

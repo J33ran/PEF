@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BreakAwayModel
+namespace BAGA
 {
     using System;
     using System.Data.Entity;
@@ -15,10 +15,10 @@ namespace BreakAwayModel
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class BreakAwayEntities : DbContext
+    public partial class BAEntities : DbContext
     {
-        public BreakAwayEntities()
-            : base("name=BreakAwayEntities")
+        public BAEntities()
+            : base("name=BAEntities")
         {
         }
     

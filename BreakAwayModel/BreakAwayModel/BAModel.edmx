@@ -736,7 +736,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BreakAwayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="ActivityID" />
@@ -745,8 +745,8 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="imagepath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="PrimaryPrefCustomers" Relationship="BreakAwayModel.FK_Customers_PriActivities" FromRole="Activities" ToRole="Customers" />
-          <NavigationProperty Name="SecondaryPrefCustomers" Relationship="BreakAwayModel.FK_Customers_SecActivities" FromRole="Activities" ToRole="Customers" />
+          <NavigationProperty Name="PrimaryPrefCustomers" Relationship="BAModel.FK_Customers_PriActivities" FromRole="Activities" ToRole="Customers" />
+          <NavigationProperty Name="SecondaryPrefCustomers" Relationship="BAModel.FK_Customers_SecActivities" FromRole="Activities" ToRole="Customers" />
           <NavigationProperty Name="Equipments" Relationship="Self.ActivityEquipment" FromRole="Activities" ToRole="Equipment" />
           <NavigationProperty Name="Trips" Relationship="Self.EventActivities" FromRole="Activities" ToRole="Events" />
         </EntityType>
@@ -805,12 +805,12 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <Property Name="SecondaryActivityID" Type="Int32" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="PrimaryActivity" Relationship="BreakAwayModel.FK_Customers_PriActivities" FromRole="Customers" ToRole="Activities" />
-          <NavigationProperty Name="SecondaryActivity" Relationship="BreakAwayModel.FK_Customers_SecActivities" FromRole="Customers" ToRole="Activities" />
+          <NavigationProperty Name="PrimaryActivity" Relationship="BAModel.FK_Customers_PriActivities" FromRole="Customers" ToRole="Activities" />
+          <NavigationProperty Name="SecondaryActivity" Relationship="BAModel.FK_Customers_SecActivities" FromRole="Customers" ToRole="Activities" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_Customers_Contact" FromRole="Customers" ToRole="Contact" />
           <NavigationProperty Name="CustomerType" Relationship="Self.FK_Customers_CustomerTypes" FromRole="Customers" ToRole="CustomerTypes" />
-          <NavigationProperty Name="SecondaryDestinations" Relationship="BreakAwayModel.FK_Customers_SecDestinations" FromRole="Customers" ToRole="Destination" />
-          <NavigationProperty Name="PrimaryDestinations" Relationship="BreakAwayModel.FK_Customers_PriDestination" FromRole="Customers" ToRole="Destinations" />
+          <NavigationProperty Name="SecondaryDestinations" Relationship="BAModel.FK_Customers_SecDestinations" FromRole="Customers" ToRole="Destination" />
+          <NavigationProperty Name="PrimaryDestinations" Relationship="BAModel.FK_Customers_PriDestination" FromRole="Customers" ToRole="Destinations" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservations_Customers" FromRole="Customers" ToRole="Reservations" />
         </EntityType>
         <EntityType Name="CustomerType">
@@ -850,8 +850,8 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </Key>
           <Property Name="DestinationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DestinationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SecondaryPerfCustomers" Relationship="BreakAwayModel.FK_Customers_SecDestinations" FromRole="Destination" ToRole="Customers" />
-          <NavigationProperty Name="PrimaryPrefCustomers" Relationship="BreakAwayModel.FK_Customers_PriDestination" FromRole="Destinations" ToRole="Customers" />
+          <NavigationProperty Name="SecondaryPerfCustomers" Relationship="BAModel.FK_Customers_SecDestinations" FromRole="Destination" ToRole="Customers" />
+          <NavigationProperty Name="PrimaryPrefCustomers" Relationship="BAModel.FK_Customers_PriDestination" FromRole="Destinations" ToRole="Customers" />
           <NavigationProperty Name="Trips" Relationship="Self.FK_Events_Locations" FromRole="Locations" ToRole="Events" />
           <NavigationProperty Name="Lodgings" Relationship="Self.FK_Lodging_Locations" FromRole="Locations" ToRole="Lodging" />
         </EntityType>
@@ -1051,7 +1051,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customers_SecDestinations">
-          <End Role="Destination" Type="BreakAwayModel.Destination" Multiplicity="0..1" />
+          <End Role="Destination" Type="BAModel.Destination" Multiplicity="0..1" />
           <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Destination">
@@ -1063,7 +1063,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customers_PriDestination">
-          <End Role="Destinations" Type="BreakAwayModel.Destination" Multiplicity="0..1" />
+          <End Role="Destinations" Type="BAModel.Destination" Multiplicity="0..1" />
           <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Destinations">
@@ -1087,8 +1087,8 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Events_Locations">
-          <End Role="Locations" Type="BreakAwayModel.Destination" Multiplicity="1" />
-          <End Role="Events" Type="BreakAwayModel.Trip" Multiplicity="*" />
+          <End Role="Locations" Type="BAModel.Destination" Multiplicity="1" />
+          <End Role="Events" Type="BAModel.Trip" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Locations">
               <PropertyRef Name="DestinationID" />
@@ -1100,7 +1100,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
         </Association>
         <Association Name="FK_Events_Lodging">
           <End Role="Lodging" Type="Self.Lodging" Multiplicity="1" />
-          <End Role="Events" Type="BreakAwayModel.Trip" Multiplicity="*" />
+          <End Role="Events" Type="BAModel.Trip" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Lodging">
               <PropertyRef Name="LodgingID" />
@@ -1111,7 +1111,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reservations_Events">
-          <End Role="Events" Type="BreakAwayModel.Trip" Multiplicity="0..1" />
+          <End Role="Events" Type="BAModel.Trip" Multiplicity="0..1" />
           <End Role="Reservations" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Events">
@@ -1123,7 +1123,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Lodging_Locations">
-          <End Role="Locations" Type="BreakAwayModel.Destination" Multiplicity="0..1" />
+          <End Role="Locations" Type="BAModel.Destination" Multiplicity="0..1" />
           <End Role="Lodging" Type="Self.Lodging" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Locations">
@@ -1152,9 +1152,9 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
         </Association>
         <Association Name="EventActivities">
           <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
-          <End Role="Events" Type="BreakAwayModel.Trip" Multiplicity="*" />
+          <End Role="Events" Type="BAModel.Trip" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="BreakAwayEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BAEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activities" EntityType="Self.Activity" />
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
@@ -1162,8 +1162,8 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
           <EntitySet Name="EquipmentSet" EntityType="Self.Equipment" />
-          <EntitySet Name="Trips" EntityType="BreakAwayModel.Trip" />
-          <EntitySet Name="Destinations" EntityType="BreakAwayModel.Destination" />
+          <EntitySet Name="Trips" EntityType="BAModel.Trip" />
+          <EntitySet Name="Destinations" EntityType="BAModel.Destination" />
           <EntitySet Name="Lodgings" EntityType="Self.Lodging" />
           <EntitySet Name="OldReservations" EntityType="Self.OldReservation" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
@@ -1172,11 +1172,11 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <EntitySet Name="CustomersinPastYears" EntityType="Self.CustomersinPastYear" />
           <EntitySet Name="vOfficeAddresses" EntityType="Self.vOfficeAddress" />
           <EntitySet Name="vPaymentsforPeriods" EntityType="Self.vPaymentsforPeriod" />
-          <AssociationSet Name="FK_Customers_PriActivities" Association="BreakAwayModel.FK_Customers_PriActivities">
+          <AssociationSet Name="FK_Customers_PriActivities" Association="BAModel.FK_Customers_PriActivities">
             <End Role="Activities" EntitySet="Activities" />
             <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customers_SecActivities" Association="BreakAwayModel.FK_Customers_SecActivities">
+          <AssociationSet Name="FK_Customers_SecActivities" Association="BAModel.FK_Customers_SecActivities">
             <End Role="Activities" EntitySet="Activities" />
             <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
@@ -1196,11 +1196,11 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             <End Role="CustomerTypes" EntitySet="CustomerTypes" />
             <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customers_SecDestinations" Association="BreakAwayModel.FK_Customers_SecDestinations">
+          <AssociationSet Name="FK_Customers_SecDestinations" Association="BAModel.FK_Customers_SecDestinations">
             <End Role="Destination" EntitySet="Destinations" />
             <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customers_PriDestination" Association="BreakAwayModel.FK_Customers_PriDestination">
+          <AssociationSet Name="FK_Customers_PriDestination" Association="BAModel.FK_Customers_PriDestination">
             <End Role="Destinations" EntitySet="Destinations" />
             <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
@@ -1236,17 +1236,17 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             <End Role="Activities" EntitySet="Activities" />
             <End Role="Events" EntitySet="Trips" />
           </AssociationSet>
-          <FunctionImport Name="ActivitiesOnATrip" ReturnType="Collection(BreakAwayModel.ActivitiesOnATrip_Result)">
+          <FunctionImport Name="ActivitiesOnATrip" ReturnType="Collection(BAModel.ActivitiesOnATrip_Result)">
             <Parameter Name="tripID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ContactsAddedinDateRange" ReturnType="Collection(BreakAwayModel.ContactsAddedinDateRange_Result)">
+          <FunctionImport Name="ContactsAddedinDateRange" ReturnType="Collection(BAModel.ContactsAddedinDateRange_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="CreateCustomerfromContact" ReturnType="Collection(BreakAwayModel.CreateCustomerfromContact_Result)">
+          <FunctionImport Name="CreateCustomerfromContact" ReturnType="Collection(BAModel.CreateCustomerfromContact_Result)">
             <Parameter Name="contactID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="CustomersWhoTravelledinDateRange" ReturnType="Collection(BreakAwayModel.CustomersWhoTravelledinDateRange_Result)">
+          <FunctionImport Name="CustomersWhoTravelledinDateRange" ReturnType="Collection(BAModel.CustomersWhoTravelledinDateRange_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1265,7 +1265,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             <Parameter Name="PaymentID" Mode="In" Type="Int32" />
             <Parameter Name="rowversion" Mode="In" Type="Binary" />
           </FunctionImport>
-          <FunctionImport Name="EventLocationsInDateRange" ReturnType="Collection(BreakAwayModel.EventLocationsInDateRange_Result)">
+          <FunctionImport Name="EventLocationsInDateRange" ReturnType="Collection(BAModel.EventLocationsInDateRange_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1288,7 +1288,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             <Parameter Name="reservationID" Mode="In" Type="Int32" />
             <Parameter Name="amount" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="PaymentsforPeriod" ReturnType="Collection(BreakAwayModel.PaymentsforPeriod_Result)">
+          <FunctionImport Name="PaymentsforPeriod" ReturnType="Collection(BAModel.PaymentsforPeriod_Result)">
             <Parameter Name="startDate" Mode="In" Type="DateTime" />
             <Parameter Name="endDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1322,7 +1322,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="TripLocationsInDateRange" ReturnType="Collection(BreakAwayModel.TripLocationsInDateRange_Result)">
+          <FunctionImport Name="TripLocationsInDateRange" ReturnType="Collection(BAModel.TripLocationsInDateRange_Result)">
             <Parameter Name="startdate" Mode="In" Type="DateTime" />
             <Parameter Name="enddate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -1453,9 +1453,9 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BreakAwayModelStoreContainer" CdmEntityContainer="BreakAwayEntities">
+        <EntityContainerMapping StorageEntityContainer="BreakAwayModelStoreContainer" CdmEntityContainer="BAEntities">
           <EntitySetMapping Name="Activities">
-            <EntityTypeMapping TypeName="BreakAwayModel.Activity">
+            <EntityTypeMapping TypeName="BAModel.Activity">
               <MappingFragment StoreEntitySet="Activities">
                 <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
                 <ScalarProperty Name="Name" ColumnName="Activity" />
@@ -1465,7 +1465,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="BreakAwayModel.Address">
+            <EntityTypeMapping TypeName="BAModel.Address">
               <MappingFragment StoreEntitySet="Address">
                 <ScalarProperty Name="addressID" ColumnName="addressID" />
                 <ScalarProperty Name="Street1" ColumnName="Street1" />
@@ -1482,7 +1482,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contacts">
-            <EntityTypeMapping TypeName="BreakAwayModel.Contact">
+            <EntityTypeMapping TypeName="BAModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -1495,7 +1495,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ContactPersonalInfoes">
-            <EntityTypeMapping TypeName="BreakAwayModel.ContactPersonalInfo">
+            <EntityTypeMapping TypeName="BAModel.ContactPersonalInfo">
               <MappingFragment StoreEntitySet="ContactPersonalInfo">
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
@@ -1506,7 +1506,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="BreakAwayModel.Customer">
+            <EntityTypeMapping TypeName="BAModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
@@ -1521,7 +1521,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerTypes">
-            <EntityTypeMapping TypeName="BreakAwayModel.CustomerType">
+            <EntityTypeMapping TypeName="BAModel.CustomerType">
               <MappingFragment StoreEntitySet="CustomerTypes">
                 <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
                 <ScalarProperty Name="Type" ColumnName="CustomerType" />
@@ -1529,7 +1529,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EquipmentSet">
-            <EntityTypeMapping TypeName="BreakAwayModel.Equipment">
+            <EntityTypeMapping TypeName="BAModel.Equipment">
               <MappingFragment StoreEntitySet="Equipment">
                 <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
                 <ScalarProperty Name="Name" ColumnName="Equipment" />
@@ -1537,7 +1537,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trips">
-            <EntityTypeMapping TypeName="BreakAwayModel.Trip">
+            <EntityTypeMapping TypeName="BAModel.Trip">
               <MappingFragment StoreEntitySet="Events">
                 <ScalarProperty Name="TripID" ColumnName="EventID" />
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
@@ -1549,7 +1549,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Destinations">
-            <EntityTypeMapping TypeName="BreakAwayModel.Destination">
+            <EntityTypeMapping TypeName="BAModel.Destination">
               <MappingFragment StoreEntitySet="Locations">
                 <ScalarProperty Name="DestinationID" ColumnName="LocationID" />
                 <ScalarProperty Name="DestinationName" ColumnName="LocationName" />
@@ -1557,7 +1557,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lodgings">
-            <EntityTypeMapping TypeName="BreakAwayModel.Lodging">
+            <EntityTypeMapping TypeName="BAModel.Lodging">
               <MappingFragment StoreEntitySet="Lodging">
                 <ScalarProperty Name="LodgingID" ColumnName="LodgingID" />
                 <ScalarProperty Name="LodgingName" ColumnName="LodgingName" />
@@ -1570,7 +1570,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OldReservations">
-            <EntityTypeMapping TypeName="BreakAwayModel.OldReservation">
+            <EntityTypeMapping TypeName="BAModel.OldReservation">
               <MappingFragment StoreEntitySet="OldReservations">
                 <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
                 <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
@@ -1581,7 +1581,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
-            <EntityTypeMapping TypeName="BreakAwayModel.Payment">
+            <EntityTypeMapping TypeName="BAModel.Payment">
               <MappingFragment StoreEntitySet="Payments">
                 <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
                 <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
@@ -1591,7 +1591,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
                 <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="BreakAwayModel.Payment">
+            <EntityTypeMapping TypeName="BAModel.Payment">
               <ModificationFunctionMapping>
                 <InsertFunction FunctionName="BreakAwayModel.Store.InsertPayment" >
                   <ScalarProperty Name="PaymentDate" ParameterName="date" />
@@ -1616,7 +1616,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reservations">
-            <EntityTypeMapping TypeName="BreakAwayModel.Reservation">
+            <EntityTypeMapping TypeName="BAModel.Reservation">
               <MappingFragment StoreEntitySet="Reservations">
                 <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
                 <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
@@ -1627,7 +1627,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BreakAwayModel.sysdiagram">
+            <EntityTypeMapping TypeName="BAModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1638,7 +1638,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomersinPastYears">
-            <EntityTypeMapping TypeName="BreakAwayModel.CustomersinPastYear">
+            <EntityTypeMapping TypeName="BAModel.CustomersinPastYear">
               <MappingFragment StoreEntitySet="CustomersinPastYear">
                 <ScalarProperty Name="COntactID" ColumnName="COntactID" />
                 <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
@@ -1657,7 +1657,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vOfficeAddresses">
-            <EntityTypeMapping TypeName="BreakAwayModel.vOfficeAddress">
+            <EntityTypeMapping TypeName="BAModel.vOfficeAddress">
               <MappingFragment StoreEntitySet="vOfficeAddresses">
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -1675,7 +1675,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vPaymentsforPeriods">
-            <EntityTypeMapping TypeName="BreakAwayModel.vPaymentsforPeriod">
+            <EntityTypeMapping TypeName="BAModel.vPaymentsforPeriod">
               <MappingFragment StoreEntitySet="vPaymentsforPeriod">
                 <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -1688,7 +1688,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ActivityEquipment" TypeName="BreakAwayModel.ActivityEquipment" StoreEntitySet="ActivityEquipment">
+          <AssociationSetMapping Name="ActivityEquipment" TypeName="BAModel.ActivityEquipment" StoreEntitySet="ActivityEquipment">
             <EndProperty Name="Activities">
               <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
             </EndProperty>
@@ -1696,7 +1696,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
               <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="EventActivities" TypeName="BreakAwayModel.EventActivities" StoreEntitySet="EventActivities">
+          <AssociationSetMapping Name="EventActivities" TypeName="BAModel.EventActivities" StoreEntitySet="EventActivities">
             <EndProperty Name="Activities">
               <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
             </EndProperty>
@@ -1706,7 +1706,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="ActivitiesOnATrip" FunctionName="BreakAwayModel.Store.ActivitiesOnATrip">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.ActivitiesOnATrip_Result">
+              <ComplexTypeMapping TypeName="BAModel.ActivitiesOnATrip_Result">
                 <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
                 <ScalarProperty Name="Activity" ColumnName="Activity" />
                 <ScalarProperty Name="imagepath" ColumnName="imagepath" />
@@ -1716,7 +1716,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ContactsAddedinDateRange" FunctionName="BreakAwayModel.Store.ContactsAddedinDateRange">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.ContactsAddedinDateRange_Result">
+              <ComplexTypeMapping TypeName="BAModel.ContactsAddedinDateRange_Result">
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -1729,7 +1729,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CreateCustomerfromContact" FunctionName="BreakAwayModel.Store.CreateCustomerfromContact">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.CreateCustomerfromContact_Result">
+              <ComplexTypeMapping TypeName="BAModel.CreateCustomerfromContact_Result">
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
                 <ScalarProperty Name="InitialDate" ColumnName="InitialDate" />
@@ -1753,7 +1753,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CustomersWhoTravelledinDateRange" FunctionName="BreakAwayModel.Store.CustomersWhoTravelledinDateRange">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.CustomersWhoTravelledinDateRange_Result">
+              <ComplexTypeMapping TypeName="BAModel.CustomersWhoTravelledinDateRange_Result">
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="PrimaryDesintation" ColumnName="PrimaryDesintation" />
                 <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
@@ -1780,7 +1780,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <FunctionImportMapping FunctionImportName="DeletePayment" FunctionName="BreakAwayModel.Store.DeletePayment" />
           <FunctionImportMapping FunctionImportName="EventLocationsInDateRange" FunctionName="BreakAwayModel.Store.EventLocationsInDateRange">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.EventLocationsInDateRange_Result">
+              <ComplexTypeMapping TypeName="BAModel.EventLocationsInDateRange_Result">
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
                 <ScalarProperty Name="LocationName" ColumnName="LocationName" />
               </ComplexTypeMapping>
@@ -1791,7 +1791,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <FunctionImportMapping FunctionImportName="InsertPayment" FunctionName="BreakAwayModel.Store.InsertPayment" />
           <FunctionImportMapping FunctionImportName="PaymentsforPeriod" FunctionName="BreakAwayModel.Store.PaymentsforPeriod">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.PaymentsforPeriod_Result">
+              <ComplexTypeMapping TypeName="BAModel.PaymentsforPeriod_Result">
                 <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
@@ -1812,7 +1812,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BreakAwayModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="TripLocationsInDateRange" FunctionName="BreakAwayModel.Store.TripLocationsInDateRange">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BreakAwayModel.TripLocationsInDateRange_Result">
+              <ComplexTypeMapping TypeName="BAModel.TripLocationsInDateRange_Result">
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
                 <ScalarProperty Name="LocationName" ColumnName="LocationName" />
               </ComplexTypeMapping>
@@ -1831,7 +1831,7 @@ warning 6002: The table/view 'D:\PROJECTS\PEF\BREAKAWAYMODEL\BREAKAWAYMODEL\BREA
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="CopyToOutputDirectory" />
       </DesignerInfoPropertySet>
     </Connection>
     <Options>

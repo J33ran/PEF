@@ -7,7 +7,7 @@
     <ProjectGuid>{2341634E-6635-4A8F-8884-587044A48261}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BreakAwayModel</RootNamespace>
+    <RootNamespace>BAGA</RootNamespace>
     <AssemblyName>BreakAwayModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -158,10 +158,6 @@
     <Content Include="BreakAway.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="BreakAway_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>BreakAway.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BAModel.edmx">
@@ -205,6 +201,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
