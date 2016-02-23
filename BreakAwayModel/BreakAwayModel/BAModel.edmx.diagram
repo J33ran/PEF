@@ -9,10 +9,10 @@
         <EntityTypeShape EntityType="BAModel.Address" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BAModel.Contact" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BAModel.ContactPersonalInfo" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BAModel.Customer" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAModel.Customer" Width="2.375" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BAModel.CustomerType" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BAModel.Equipment" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BAModel.Trip" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BAModel.Trip" Width="1.5" PointX="6" PointY="5.75" IsExpanded="false" />
         <EntityTypeShape EntityType="BAModel.Destination" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BAModel.Lodging" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BAModel.OldReservation" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />

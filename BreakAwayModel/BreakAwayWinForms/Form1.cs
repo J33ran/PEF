@@ -17,24 +17,31 @@ namespace BreakAwayWinForms
             InitializeComponent();
         }
 
-        private void notesLabel_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
 
-        }
 
-        private void nameLabel_Click(object sender, EventArgs e)
-        {
 
-        }
+                using (var context = new BAGA.BAEntities())
+                {
+                    List<BAGA.Customer> customers =
+                    context.Customers.Include("Contact")
+                    .Include("PrimaryActivity")
+                    .Include("SecondaryActivity")
+                    .Include("PrimaryDestinations")
+                    .Include("SecondaryDestinations")
+                    .Include("Reservations.Trip.Destination")
+                    .ToList();
 
-        private void nameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void primaryActivity_Click(object sender, EventArgs e)
-        {
-
+                    customerBindingSource.DataSource = customers;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

@@ -44,7 +44,6 @@
             System.Windows.Forms.Label primaryDestinationLabel;
             this.customerBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -68,6 +67,7 @@
             this.secondaryActivityTextBox = new System.Windows.Forms.TextBox();
             this.secondaryDestinationTextBox = new System.Windows.Forms.TextBox();
             this.primaryDestinationTextBox = new System.Windows.Forms.TextBox();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             addDateLabel = new System.Windows.Forms.Label();
             contactIDLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -156,7 +156,6 @@
             notesLabel.Size = new System.Drawing.Size(38, 13);
             notesLabel.TabIndex = 19;
             notesLabel.Text = "Notes:";
-            notesLabel.Click += new System.EventHandler(this.notesLabel_Click);
             // 
             // primaryActivityLabel
             // 
@@ -166,7 +165,6 @@
             primaryActivityLabel.Size = new System.Drawing.Size(81, 13);
             primaryActivityLabel.TabIndex = 20;
             primaryActivityLabel.Text = "Primary Activity:";
-            primaryActivityLabel.Click += new System.EventHandler(this.primaryActivity_Click);
             // 
             // customerBindingNavigator
             // 
@@ -206,10 +204,6 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(BAGA.Customer);
             // 
             // bindingNavigatorCountItem
             // 
@@ -359,7 +353,6 @@
             this.primaryActivityTextBox.Name = "primaryActivityTextBox";
             this.primaryActivityTextBox.Size = new System.Drawing.Size(126, 20);
             this.primaryActivityTextBox.TabIndex = 21;
-            this.primaryActivityTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // notesTextBox
             // 
@@ -378,7 +371,6 @@
             secondaryActivityLabel.Size = new System.Drawing.Size(98, 13);
             secondaryActivityLabel.TabIndex = 21;
             secondaryActivityLabel.Text = "Secondary Activity:";
-            secondaryActivityLabel.Click += new System.EventHandler(this.nameLabel_Click);
             // 
             // secondaryActivityTextBox
             // 
@@ -422,6 +414,10 @@
             this.primaryDestinationTextBox.Size = new System.Drawing.Size(126, 20);
             this.primaryDestinationTextBox.TabIndex = 24;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(BAGA.Customer);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,6 +450,7 @@
             this.Controls.Add(this.customerBindingNavigator);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingNavigator)).EndInit();
             this.customerBindingNavigator.ResumeLayout(false);
             this.customerBindingNavigator.PerformLayout();
